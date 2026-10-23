@@ -1,0 +1,376 @@
+.energy {
+    /* Extra top padding so the tilted marquee above never touches the content */
+    padding-block: clamp(5rem, 10vw, 8rem) clamp(4rem, 9vw, 7rem);
+    background: var(--color-paper);
+    scroll-margin-top: 5rem;
+}
+
+.inner {
+    display: grid;
+    gap: 3rem;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ---------- Image side ---------- */
+.media {
+    position: relative;
+}
+
+.frame {
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-sand-200);
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 1200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Circular badge, top right */
+.badge {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    display: grid;
+    place-items: center;
+    width: 5rem;
+    height: 5rem;
+    margin: 0;
+    padding: 0.6rem;
+    border: 1px solid rgb(255 255 255 / 55%);
+    border-radius: 50%;
+    background: rgb(20 40 30 / 45%);
+    color: #fff;
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+    transition:
+        transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+        background-color 400ms ease;
+}
+
+/* Tag, bottom left */
+.tag {
+    position: absolute;
+    bottom: 1.1rem;
+    left: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0.7rem 1rem;
+    background: var(--color-paper);
+    color: var(--color-forest-900);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Text side ---------- */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 1.25rem;
+    color: var(--color-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.heading {
+    margin: 0;
+    color: var(--color-forest-900);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+
+.headingLine {
+    display: block;
+}
+
+.lead {
+    max-width: 36rem;
+    margin: 1.75rem 0 0;
+    color: var(--color-soft);
+    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+    line-height: 1.85;
+}
+
+/* ---------- List rows ---------- */
+.list {
+    width: 100%;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+    list-style: none;
+}
+
+.listItem {
+    border-bottom: 1px solid var(--color-line);
+}
+
+.row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.3rem;
+    color: var(--color-forest-900);
+    text-decoration: none;
+}
+
+/* A dark line draws over the divider on hover */
+.row::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    background: var(--color-forest-900);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.number {
+    width: 1.25rem;
+    color: var(--color-soft);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.label {
+    flex: 1;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* The box clips the arrow as it slides out */
+.arrow {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    color: var(--color-soft);
+    transition: color 300ms ease;
+}
+
+/* ---------- CTA button ---------- */
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1.1rem 1.5rem;
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 150ms ease;
+}
+
+.ctaArrow {
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+}
+
+/* ---------- Arrow slide-through animations ---------- */
+/* The arrow exits to the right, then re-enters from the left */
+@keyframes arrow-swap {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+
+    46% {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Same idea along the diagonal for the up-right arrow */
+@keyframes arrow-swap-diagonal {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translate(150%, -150%);
+        opacity: 0;
+    }
+
+    46% {
+        transform: translate(-150%, 150%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+/* ---------- Hover and keyboard focus ---------- */
+.row:focus-visible,
+.cta:focus-visible {
+    outline: 2px solid var(--color-forest-900);
+    outline-offset: 3px;
+}
+
+.row:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.row:focus-visible .number,
+.row:focus-visible .label {
+    transform: translateX(0.4rem);
+}
+
+.row:focus-visible .arrow {
+    color: var(--color-forest-900);
+}
+
+.row:focus-visible .arrowIcon {
+    animation: arrow-swap 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (hover: hover) {
+    .media:hover .image {
+        transform: scale(1.07);
+    }
+
+    .media:hover .badge {
+        background: rgb(20 40 30 / 70%);
+        transform: rotate(-12deg) scale(1.08);
+    }
+
+    .media:hover .tag {
+        transform: translateY(-0.3rem);
+    }
+
+    .row:hover::after {
+        transform: scaleX(1);
+    }
+
+    .row:hover .number,
+    .row:hover .label {
+        transform: translateX(0.4rem);
+    }
+
+    .row:hover .arrow {
+        color: var(--color-forest-900);
+    }
+
+    .row:hover .arrowIcon {
+        animation: arrow-swap 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .cta:hover {
+        background: #cde45a;
+    }
+
+    .cta:hover .ctaArrowIcon {
+        animation: arrow-swap-diagonal 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .image,
+    .badge,
+    .tag,
+    .row::after,
+    .number,
+    .label,
+    .arrow {
+        transition: none;
+    }
+
+    .arrowIcon,
+    .ctaArrowIcon {
+        animation: none !important;
+    }
+}
+
+/* ---------- Tablet (40em ≈ 640px) ---------- */
+@media (min-width: 40em) {
+    .badge {
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 5.5rem;
+        height: 5.5rem;
+        font-size: 0.5625rem;
+    }
+
+    .tag {
+        bottom: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+/* ---------- Two columns (64em ≈ 1024px) ---------- */
+@media (min-width: 64em) {
+    .inner {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+        column-gap: clamp(3rem, 8vw, 7.5rem);
+        align-items: center;
+    }
+
+    .frame {
+        aspect-ratio: 8 / 7;
+    }
+}

@@ -1,0 +1,211 @@
+.footer {
+    background: var(--color-paper);
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 2.5rem var(--gutter) 2.25rem;
+}
+
+/* ---------- Top row ---------- */
+.top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.75rem 2rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.mark {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: -0.06em;
+}
+
+.name,
+.tagline {
+    margin: 0;
+}
+
+.name {
+    color: var(--color-forest-900);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.tagline {
+    margin-top: 0.3rem;
+    color: var(--color-soft);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.link {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.35rem;
+    color: var(--color-soft);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 250ms ease;
+}
+
+/* A dark underline draws across the link on hover */
+.link::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: var(--color-forest-900);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Bottom row ---------- */
+.bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 2.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.copyright {
+    margin: 0;
+    color: var(--color-soft);
+    font-size: 0.6875rem;
+}
+
+.backToTop {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-forest-900);
+    font: inherit;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.arrow {
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    /* clips the arrow as it slides through */
+}
+
+/* The arrow leaves upward, then re-enters from below */
+@keyframes arrow-lift {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    45% {
+        opacity: 0;
+        transform: translateY(-150%);
+    }
+
+    46% {
+        opacity: 0;
+        transform: translateY(150%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Hover and keyboard focus ---------- */
+.link:focus-visible,
+.backToTop:focus-visible {
+    outline: 2px solid var(--color-forest-900);
+    outline-offset: 3px;
+}
+
+.link:focus-visible {
+    color: var(--color-forest-900);
+}
+
+.link:focus-visible::after {
+    transform: scaleX(1);
+}
+
+@media (hover: hover) {
+    .link:hover {
+        color: var(--color-forest-900);
+    }
+
+    .link:hover::after {
+        transform: scaleX(1);
+    }
+
+    .backToTop:hover .arrowIcon {
+        animation: arrow-lift 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .link,
+    .link::after {
+        transition: none;
+    }
+
+    .arrowIcon {
+        animation: none !important;
+    }
+}
+
+/* ---------- Mobile: links sit under the brand ---------- */
+@media (max-width: 39.99em) {
+    .top {
+        align-items: flex-start;
+    }
+}

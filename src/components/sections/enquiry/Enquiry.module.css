@@ -1,0 +1,612 @@
+/* ============ Lime featured strip ============ */
+.featured {
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+}
+
+.featuredInner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem 2rem;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 2.25rem var(--gutter);
+}
+
+.featuredEyebrow {
+    margin: 0;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.featuredTitle {
+    margin: 0.6rem 0 0;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+.featuredDetail {
+    opacity: 0.6;
+}
+
+.featuredCta {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1.15rem 1.4rem;
+    border: 1px solid color-mix(in srgb, var(--color-forest-900) 30%, transparent);
+    background: color-mix(in srgb, var(--color-forest-900) 6%, transparent);
+    color: var(--color-forest-900);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        background-color 300ms ease,
+        border-color 300ms ease,
+        color 300ms ease;
+}
+
+.featuredArrow {
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+}
+
+/* ============ Dark enquiry section ============ */
+.contact {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 9vw, 7rem);
+    background: var(--color-forest-900);
+    color: var(--color-paper);
+}
+
+.inner {
+    position: relative;
+    display: grid;
+    gap: 3rem;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+.left,
+.card {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- Decorative rings ---------- */
+.rings {
+    position: absolute;
+    top: -22rem;
+    right: 0;
+    display: none;
+    width: 40rem;
+    height: 40rem;
+    pointer-events: none;
+}
+
+.ring,
+.ripple {
+    position: absolute;
+    border: 1px solid rgb(255 255 255 / 8%);
+    border-radius: 50%;
+}
+
+.ring {
+    inset: 0;
+}
+
+.ringInner {
+    inset: 6rem;
+}
+
+/* Rings that expand outward from the inner circle and fade, on a slow loop */
+.ripple {
+    inset: 6rem;
+    border-color: rgb(255 255 255 / 16%);
+    opacity: 0;
+    animation: ripple 7s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+.rippleLate {
+    animation-delay: 3.5s;
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.43);
+    }
+}
+
+/* ---------- Left column ---------- */
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 1.5rem;
+    color: var(--color-lime-400);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.heading {
+    margin: 0;
+    color: var(--color-paper);
+    font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+}
+
+.headingLine {
+    display: block;
+}
+
+.lead {
+    max-width: 28rem;
+    margin: 2rem 0 0;
+    color: rgb(251 250 246 / 88%);
+    font-size: 0.9375rem;
+    line-height: 1.95;
+}
+
+.assurance {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 33rem;
+    margin-top: 2.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgb(255 255 255 / 16%);
+}
+
+.assuranceText {
+    max-width: 19rem;
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.75;
+}
+
+/* Lime check circle with a soft pulse ring */
+.check {
+    position: relative;
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+}
+
+.check::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--color-lime-400);
+    border-radius: 50%;
+    animation: pulse 2.6s ease-out infinite;
+}
+
+.checkLarge {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.9);
+    }
+}
+
+/* ---------- Form card ---------- */
+.card {
+    scroll-margin-top: 6rem;
+    padding: 1.5rem;
+    border: 1px solid rgb(255 255 255 / 18%);
+    background: rgb(255 255 255 / 4%);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgb(255 255 255 / 18%);
+}
+
+.cardTitle {
+    margin: 0;
+    color: var(--color-lime-400);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.step {
+    margin: 0;
+    font-size: 0.75rem;
+    opacity: 0.85;
+}
+
+.form {
+    display: grid;
+    gap: 1.75rem 2rem;
+    padding-top: 1.75rem;
+}
+
+.field {
+    min-width: 0;
+}
+
+.label {
+    display: block;
+    color: var(--color-paper);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 300ms ease;
+}
+
+.optional {
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    opacity: 0.75;
+    text-transform: none;
+}
+
+/* The label turns lime while its field has focus */
+.field:focus-within .label {
+    color: var(--color-lime-400);
+}
+
+.control {
+    position: relative;
+}
+
+/* Lime line that draws across the bottom of the field on focus */
+.control::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--color-lime-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.control:focus-within::after {
+    transform: scaleX(1);
+}
+
+/* After the visitor has interacted, an invalid field shows a coral line */
+.control:has(:user-invalid)::after {
+    background: #ff9d7a;
+    transform: scaleX(1);
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 0.95rem 0 0.9rem;
+    border: 0;
+    border-bottom: 1px solid rgb(255 255 255 / 30%);
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-paper);
+    font: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+.input::placeholder {
+    color: rgb(255 255 255 / 45%);
+}
+
+.select {
+    padding-right: 2rem;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f3f1e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.1rem center;
+}
+
+/* Dim the select while it still shows the placeholder option */
+.select:invalid {
+    color: rgb(255 255 255 / 45%);
+}
+
+.select option {
+    background: var(--color-forest-900);
+    color: var(--color-paper);
+}
+
+.textarea {
+    min-height: 5.5rem;
+    resize: none;
+}
+
+/* ---------- Form footer ---------- */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
+    margin-top: 0.5rem;
+}
+
+.note {
+    max-width: 20rem;
+    margin: 0;
+    color: rgb(251 250 246 / 75%);
+    font-size: 0.6875rem;
+    line-height: 1.8;
+}
+
+.error {
+    margin: 0.6rem 0 0;
+    color: #ff9d7a;
+    font-size: 0.75rem;
+}
+
+.submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1.1rem 1.6rem;
+    border: 0;
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+    font: inherit;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        box-shadow 300ms ease,
+        transform 300ms ease;
+}
+
+.submit:disabled {
+    cursor: progress;
+    opacity: 0.7;
+}
+
+.submitArrow {
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+}
+
+/* ---------- Success state ---------- */
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.success {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding-block: 2.5rem 1rem;
+    animation: rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.successTitle {
+    margin: 0.6rem 0 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+.successText {
+    max-width: 26rem;
+    margin: 0;
+    color: rgb(251 250 246 / 85%);
+    font-size: 0.9375rem;
+    line-height: 1.8;
+}
+
+.again {
+    margin-top: 0.75rem;
+    padding: 0 0 0.45rem;
+    border: 0;
+    border-bottom: 2px solid var(--color-lime-400);
+    background: transparent;
+    color: var(--color-paper);
+    font: inherit;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* ============ Arrow slide-through animations ============ */
+@keyframes arrow-swap {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    45% {
+        opacity: 0;
+        transform: translateX(150%);
+    }
+
+    46% {
+        opacity: 0;
+        transform: translateX(-150%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes arrow-swap-diagonal {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    45% {
+        opacity: 0;
+        transform: translate(150%, -150%);
+    }
+
+    46% {
+        opacity: 0;
+        transform: translate(-150%, 150%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+/* ============ Hover and keyboard focus ============ */
+.featuredCta:focus-visible {
+    outline: 2px solid var(--color-forest-900);
+    outline-offset: 3px;
+}
+
+.submit:focus-visible,
+.again:focus-visible {
+    outline: 2px solid var(--color-paper);
+    outline-offset: 4px;
+}
+
+@media (hover: hover) {
+    .featuredCta:hover {
+        border-color: var(--color-forest-900);
+        background: var(--color-forest-900);
+        color: var(--color-lime-400);
+    }
+
+    .featuredCta:hover .featuredArrowIcon {
+        animation: arrow-swap-diagonal 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .submit:not(:disabled):hover {
+        box-shadow: 0 12px 26px -10px rgb(215 232 111 / 55%);
+        transform: translateY(-2px);
+    }
+
+    .submit:not(:disabled):hover .submitArrowIcon {
+        animation: arrow-swap 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ripple,
+    .check::after,
+    .success {
+        animation: none;
+    }
+
+    .ripple {
+        opacity: 0;
+    }
+
+    .control::after,
+    .label,
+    .featuredCta,
+    .submit {
+        transition: none;
+    }
+
+    .featuredArrowIcon,
+    .submitArrowIcon {
+        animation: none !important;
+    }
+}
+
+/* ============ Tablet (40em ≈ 640px) ============ */
+@media (min-width: 40em) {
+    .card {
+        padding: 2.25rem;
+    }
+
+    .form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wide,
+    .footer {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ============ Desktop: two columns, rings visible (64em ≈ 1024px) ============ */
+@media (min-width: 64em) {
+    .inner {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+        column-gap: clamp(3rem, 8vw, 8.5rem);
+        align-items: start;
+    }
+
+    .rings {
+        display: block;
+    }
+}

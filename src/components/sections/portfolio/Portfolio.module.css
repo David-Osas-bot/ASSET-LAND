@@ -1,0 +1,263 @@
+.portfolio {
+    /* Section background. Swap for your exact sand token if it differs. */
+    --section-bg: var(--color-sand-100, #f2efe6);
+
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+    background: var(--section-bg);
+    scroll-margin-top: 5rem;
+}
+
+.inner {
+    display: grid;
+    gap: 3rem;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ---------- Header ---------- */
+.header {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 1.25rem;
+    color: var(--color-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.heading {
+    margin: 0;
+    color: var(--color-forest-900);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+}
+
+.headingLine {
+    display: block;
+}
+
+.intro {
+    max-width: 24rem;
+    margin: 0;
+    color: var(--color-soft);
+    font-size: 0.9375rem;
+    line-height: 1.85;
+}
+
+/* ---------- Card grid ---------- */
+/* The 1px gap shows the grid's background, which draws the dividers. */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--color-line);
+    background: var(--color-line);
+    list-style: none;
+}
+
+.cell {
+    display: flex;
+    background: var(--section-bg);
+}
+
+.card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 12rem;
+    padding: 1.75rem 2rem;
+    overflow: hidden;
+    color: var(--color-forest-900);
+    text-decoration: none;
+}
+
+/* Hover layer 1: a tint rises from the bottom of the card */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: color-mix(in srgb, var(--color-sage-200) 45%, transparent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Hover layer 2: a lime line draws across the bottom edge */
+.card::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-lime-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms;
+}
+
+.top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.number {
+    color: var(--color-soft);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+    color: var(--color-soft);
+    transition:
+        transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1),
+        color 300ms ease;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    padding-top: 3rem;
+}
+
+.title {
+    font-size: 1.375rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+    color: var(--color-soft);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition:
+        transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1),
+        color 300ms ease;
+}
+
+.ctaArrow {
+    transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Hover and keyboard focus ---------- */
+.card:focus-visible {
+    outline: 2px solid var(--color-forest-900);
+    outline-offset: -4px;
+}
+
+.card:focus-visible::before,
+.card:focus-visible::after {
+    transform: scale(1);
+}
+
+.card:focus-visible .icon {
+    transform: scale(1.2) rotate(-8deg);
+    color: var(--color-forest-900);
+}
+
+.card:focus-visible .title,
+.card:focus-visible .cta {
+    transform: translateY(-0.35rem);
+}
+
+.card:focus-visible .cta {
+    color: var(--color-forest-900);
+}
+
+.card:focus-visible .ctaArrow {
+    transform: translateX(0.35rem);
+}
+
+@media (hover: hover) {
+
+    .card:hover::before,
+    .card:hover::after {
+        transform: scale(1);
+    }
+
+    .card:hover .icon {
+        transform: scale(1.2) rotate(-8deg);
+        color: var(--color-forest-900);
+    }
+
+    .card:hover .title,
+    .card:hover .cta {
+        transform: translateY(-0.35rem);
+    }
+
+    .card:hover .cta {
+        color: var(--color-forest-900);
+    }
+
+    .card:hover .ctaArrow {
+        transform: translateX(0.35rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card::before,
+    .card::after,
+    .icon,
+    .title,
+    .cta,
+    .ctaArrow {
+        transition: none;
+    }
+}
+
+/* ---------- Tablet: 2 columns (40em ≈ 640px) ---------- */
+@media (min-width: 40em) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ---------- Desktop: 4 columns, header splits (64em ≈ 1024px) ---------- */
+@media (min-width: 64em) {
+    .header {
+        grid-template-columns: 1fr minmax(0, 24rem);
+        align-items: end;
+        column-gap: 3rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

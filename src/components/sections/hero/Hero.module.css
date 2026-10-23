@@ -1,0 +1,195 @@
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(2rem, 5vw, 3.75rem) 2rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -9rem;
+    left: -9rem;
+    z-index: -1;
+    width: 30rem;
+    height: 30rem;
+    background-color: var(--color-forest-900);
+    opacity: 0.40;
+    pointer-events: none;
+    -webkit-mask: url('../../assets/images/hero-globe.svg') center / contain no-repeat;
+    mask: url('../../assets/images/hero-globe.svg') center / contain no-repeat;
+}
+
+.inner {
+    display: grid;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ---------- Left column ---------- */
+.content {
+    display: flex;
+    flex-direction: column;
+    /* Lets the headline size itself from the column width (cqi units). */
+    container-type: inline-size;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 1.5rem;
+    color: var(--color-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.heading {
+    margin: 0;
+    color: var(--color-forest-900);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    /* fallback */
+    font-size: clamp(2.5rem, 13cqi, 4.75rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+}
+
+.headingLine {
+    display: block;
+}
+
+/* Lime rule under the headline */
+.heading::after {
+    content: '';
+    display: block;
+    width: 94%;
+    height: 0.7rem;
+    margin-top: 0.4rem;
+    background: var(--color-lime-400);
+}
+
+.lead {
+    max-width: 34rem;
+    margin: 2.25rem 0 0;
+    color: var(--color-soft);
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem);
+    line-height: 1.85;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.5rem 1rem;
+    margin: 2.5rem 0 3rem;
+}
+
+/* ---------- Assurance row ---------- */
+.assurance {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.assuranceIcons {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.assuranceIcon {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin-left: -0.5rem;
+    border-radius: 50%;
+    color: var(--color-forest-900);
+    box-shadow: 0 0 0 2px var(--color-paper);
+}
+
+.assuranceIcon:first-child {
+    margin-left: 0;
+    background: var(--color-lime-400);
+}
+
+.assuranceIcon:nth-child(2) {
+    background: var(--color-sage-200);
+}
+
+.assuranceIcon:nth-child(3) {
+    background: var(--color-sand-200);
+}
+
+.assuranceTitle,
+.assuranceText {
+    margin: 0;
+    font-size: 0.8125rem;
+}
+
+.assuranceTitle {
+    color: var(--color-ink);
+    font-weight: 700;
+}
+
+.assuranceText {
+    margin-top: 0.15rem;
+    color: var(--color-soft);
+}
+
+/* ---------- Scroll cue ---------- */
+.scrollCue {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    justify-self: start;
+    margin-top: 1rem;
+    color: var(--color-soft);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 150ms ease;
+}
+
+.scrollCue:hover {
+    color: var(--color-forest-900);
+}
+
+/* ---------- Two columns (64em ≈ 1024px) ---------- */
+@media (min-width: 64em) {
+
+    .hero::before {
+        top: -14rem;
+        left: -14rem;
+        width: 46rem;
+        height: 46rem;
+    }
+
+    .inner {
+        grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+        column-gap: clamp(2.5rem, 5vw, 4rem);
+        align-items: stretch;
+    }
+
+    .scrollCue {
+        grid-column: 1 / -1;
+        margin-top: 2.5rem;
+    }
+}

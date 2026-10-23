@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none" stroke="#000" stroke-width="1.5">
+  <circle cx="300" cy="300" r="290"/>
+  <!-- meridians -->
+  <ellipse cx="300" cy="300" rx="200" ry="290"/>
+  <ellipse cx="300" cy="300" rx="100" ry="290"/>
+  <line x1="300" y1="10" x2="300" y2="590"/>
+  <!-- parallels -->
+  <line x1="10" y1="300" x2="590" y2="300"/>
+  <line x1="49" y1="155" x2="551" y2="155"/>
+  <line x1="49" y1="445" x2="551" y2="445"/>
+  <line x1="155" y1="49" x2="445" y2="49"/>
+  <line x1="155" y1="551" x2="445" y2="551"/>
+</svg>

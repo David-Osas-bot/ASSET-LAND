@@ -1,0 +1,116 @@
+.marquee {
+    /* The slant. More negative = steeper. */
+    --tilt: -5deg;
+
+    /* Must match the neighbouring sections. Use the same sand value as --section-bg in Portfolio.module.css. */
+    --above-bg: var(--color-sand-100, #f2efe6);
+    --below-bg: var(--color-paper);
+
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    /* the neighbouring sections' own padding gives the breathing room */
+    overflow-x: clip;
+    /* Colour split along the same slant as the band, so the band sits exactly on the seam */
+    background: linear-gradient(calc(180deg + var(--tilt)),
+            var(--above-bg) 50%,
+            var(--below-bg) 50%);
+}
+
+.band {
+    width: 120%;
+    margin-left: -10%;
+    /* Thicker band to match the design (about 160px on desktop) */
+    padding-block: clamp(1.75rem, 4vw, 4rem);
+    overflow: hidden;
+    background: var(--color-forest-900);
+    box-shadow: 0 20px 30px -18px rgb(0 0 0 / 45%);
+    transform: rotate(var(--tilt));
+}
+
+.track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+}
+
+/* Pause while the visitor hovers over the band */
+.band:hover .track {
+    animation-play-state: paused;
+}
+
+/* Two identical groups sit side by side, so -50% is exactly one group */
+@keyframes marquee-scroll {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100vw;
+    /* keeps the loop long enough on very wide screens */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.text {
+    color: var(--color-paper);
+    font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.diamond {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-inline: clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--color-lime-400);
+    transform: rotate(45deg);
+}
+
+/* ---------- Larger screens: a little less steep, still obvious ---------- */
+@media (min-width: 48em) {
+    .marquee {
+        --tilt: -3.5deg;
+    }
+}
+
+/* ---------- Reduced motion: no scrolling, content wraps and stays readable ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .track {
+        width: 100%;
+        animation: none;
+    }
+
+    .group {
+        flex-wrap: wrap;
+        gap: 1rem 0;
+        min-width: 0;
+        padding-inline: 10%;
+        /* offsets the band's -10% margin so text stays on screen */
+        justify-content: center;
+    }
+
+    .group[aria-hidden='true'] {
+        display: none;
+    }
+}

@@ -1,0 +1,389 @@
+.professional {
+    padding-block: clamp(4rem, 8vw, 6rem);
+    background: var(--color-paper);
+    scroll-margin-top: 5rem;
+}
+
+.inner {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+/* ---------- Header ---------- */
+.header {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0 0 1.25rem;
+    color: var(--color-soft);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.heading {
+    margin: 0;
+    color: var(--color-forest-900);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+}
+
+.headingLine {
+    display: block;
+}
+
+.intro {
+    max-width: 24rem;
+    margin: 0;
+    color: var(--color-soft);
+    font-size: 0.9375rem;
+    line-height: 1.85;
+}
+
+/* ---------- Panels ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cell {
+    display: flex;
+}
+
+.panel {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: clamp(26rem, 38vw, 35rem);
+    padding: 1.75rem;
+    overflow: hidden;
+    background: var(--color-forest-900);
+    color: #fff;
+    text-decoration: none;
+}
+
+.image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 1200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Dark gradient so the white text stays readable; it deepens on hover */
+.shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top,
+            rgb(10 25 18 / 88%) 0%,
+            rgb(10 25 18 / 45%) 45%,
+            rgb(10 25 18 / 0%) 75%);
+    opacity: 0.85;
+    transition: opacity 500ms ease;
+}
+
+.tag {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.label {
+    color: var(--color-lime-400);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.title {
+    margin-top: 0.9rem;
+    font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+}
+
+.titleLine {
+    display: block;
+}
+
+.text {
+    max-width: 18rem;
+    margin-top: 1.1rem;
+    padding-right: 4rem;
+    /* keeps the text clear of the arrow circle */
+    color: rgb(255 255 255 / 92%);
+    font-size: 0.875rem;
+    line-height: 1.75;
+}
+
+/* Round arrow button, bottom right */
+.go {
+    position: absolute;
+    right: 1.75rem;
+    bottom: 1.75rem;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    /* clips the arrow as it slides through */
+    border: 1px solid rgb(255 255 255 / 70%);
+    border-radius: 50%;
+    color: #fff;
+    transition:
+        background-color 300ms ease,
+        border-color 300ms ease,
+        color 300ms ease,
+        transform 500ms cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* The arrow exits to the top right, then re-enters from the bottom left */
+@keyframes arrow-swap-diagonal {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translate(150%, -150%);
+        opacity: 0;
+    }
+
+    46% {
+        transform: translate(-150%, 150%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+/* Same slide-through, horizontal, for the footer link */
+@keyframes arrow-swap {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+
+    46% {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ---------- Footer row ---------- */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.footerText {
+    margin: 0;
+    color: var(--color-soft);
+    font-size: 0.8125rem;
+}
+
+.footerLink {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 0.55rem;
+    color: var(--color-forest-900);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* Short underline that stretches across the link on hover */
+.footerLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.75rem;
+    height: 2px;
+    background: var(--color-forest-900);
+    transition: width 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.footerArrow {
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+}
+
+/* ---------- Hover and keyboard focus ---------- */
+.panel:focus-visible,
+.footerLink:focus-visible {
+    outline: 2px solid var(--color-lime-400);
+    outline-offset: -4px;
+}
+
+.footerLink:focus-visible {
+    outline-color: var(--color-forest-900);
+    outline-offset: 4px;
+}
+
+.panel:focus-visible .image {
+    transform: scale(1.06);
+}
+
+.panel:focus-visible .shade {
+    opacity: 1;
+}
+
+.panel:focus-visible .content {
+    transform: translateY(-0.4rem);
+}
+
+.panel:focus-visible .go {
+    border-color: var(--color-lime-400);
+    background: var(--color-lime-400);
+    color: var(--color-forest-900);
+}
+
+@media (hover: hover) {
+    .panel:hover .image {
+        transform: scale(1.06);
+    }
+
+    .panel:hover .shade {
+        opacity: 1;
+    }
+
+    .panel:hover .content {
+        transform: translateY(-0.4rem);
+    }
+
+    .panel:hover .go {
+        border-color: var(--color-lime-400);
+        background: var(--color-lime-400);
+        color: var(--color-forest-900);
+        transform: scale(1.08);
+    }
+
+    .panel:hover .goIcon {
+        animation: arrow-swap-diagonal 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .footerLink:hover::after {
+        width: 100%;
+    }
+
+    .footerLink:hover .footerArrowIcon {
+        animation: arrow-swap 550ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .image,
+    .shade,
+    .content,
+    .go,
+    .footerLink::after {
+        transition: none;
+    }
+
+    .goIcon,
+    .footerArrowIcon {
+        animation: none !important;
+    }
+}
+
+/* ---------- Tablet (40em ≈ 640px) ---------- */
+@media (min-width: 40em) {
+    .panel {
+        padding: 2rem;
+    }
+
+    .tag {
+        top: 1.5rem;
+        left: 2rem;
+    }
+
+    .go {
+        right: 2rem;
+        bottom: 2rem;
+    }
+}
+
+/* ---------- Desktop: panels side by side, header splits (64em ≈ 1024px) ---------- */
+@media (min-width: 64em) {
+    .header {
+        grid-template-columns: 1fr minmax(0, 24rem);
+        align-items: end;
+        column-gap: 3rem;
+    }
+
+    .grid {
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    }
+}

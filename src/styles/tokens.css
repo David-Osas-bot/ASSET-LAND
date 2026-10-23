@@ -1,0 +1,28 @@
+/* Design tokens. Components read these; they never hard-code colours. */
+:root {
+    /* Colour */
+    --color-forest-900: #1e3a2c;
+    --color-forest-800: #2a4d3a;
+    --color-lime-400: #d6ec6b;
+    --color-leaf-500: #5f8f3f;
+    --color-sage-200: #dde1d6;
+    --color-sand-200: #eadfd3;
+    --color-paper: #fbfaf6;
+    --color-ink: #1c211e;
+    --color-muted: #646a63;
+    --color-soft: #586659;
+    --color-line: #e6e4db;
+
+    /* Type */
+    --font-sans: 'DM Sans Variable', 'DM Sans', system-ui, -apple-system,
+        'Segoe UI', Roboto, Arial, sans-serif;
+
+    /* Layout */
+    --container-max: 1360px;
+    --gutter: clamp(1rem, 4vw, 2rem);
+    --header-height: 5rem;
+
+    /* Layering */
+    --z-header: 50;
+    --z-skip-link: 100;
+}

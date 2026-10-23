@@ -1,0 +1,55 @@
+.base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+}
+
+.fullWidth {
+    display: flex;
+    width: 100%;
+}
+
+/* Primary: solid forest button */
+.primary {
+    padding: 1rem 1.5rem;
+    border-radius: 2px;
+    background: var(--color-forest-900);
+    color: var(--color-paper);
+}
+
+.primary:hover {
+    background: var(--color-forest-800);
+}
+
+.large {
+    padding: 1.2rem 1.65rem;
+}
+
+/* Text: label with a short underline that grows on hover */
+.text {
+    position: relative;
+    padding: 0 0.85rem;
+    color: var(--color-forest-900);
+}
+
+.text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.8rem;
+    height: 2px;
+    background: currentColor;
+    transition: width 200ms ease;
+}
+
+.text:hover::after {
+    width: 100%;
+}
