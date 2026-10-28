@@ -1,17 +1,19 @@
-import { SITE } from '../../../config/site';
-import styles from './Header.module.css';
+import logoImage from '../../../assets/images/logo/assetland-logo.png';
+import styles from './Logo.module.css';
 
-export default function Logo() {
+export function Logo({ href = '/', className = '' }) {
     return (
-        <a className={styles.logo} href="/" aria-label={`${SITE.name}, home`}>
-            <span className={styles.logoMark} aria-hidden="true">
-                {SITE.logoMark}
-                <span className={styles.logoDot} />
-            </span>
-            <span className={styles.logoText}>
-                <span className={styles.logoName}>{SITE.name.toUpperCase()}</span>
-                <span className={styles.logoTagline}>{SITE.tagline}</span>
-            </span>
+        <a className={`${styles.logo} ${className}`} href={href}>
+            <img
+                className={styles.image}
+                src={logoImage}
+                alt="Asset Land Limited"
+                width={700}
+                height={226}
+                decoding="async"
+            />
         </a>
     );
 }
+
+export default Logo;

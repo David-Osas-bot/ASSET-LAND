@@ -1,0 +1,19 @@
+.logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    text-decoration: none;
+}
+
+.image {
+    display: block;
+    width: auto;
+    height: 2.75rem;
+    /* about 44px: raise or lower to resize the logo */
+}
+
+@media (min-width: 64em) {
+    .image {
+        height: 3rem;
+    }
+}

@@ -1,5 +1,6 @@
 import { FOOTER } from '../../../config/footer';
 import styles from './Footer.module.css';
+import Logo from '../Header/Logo';
 
 function ArrowUp() {
     return (
@@ -34,13 +35,7 @@ export default function Footer() {
             <div className={styles.inner}>
                 <div className={styles.top}>
                     <div className={styles.brand}>
-                        <span className={styles.mark} aria-hidden="true">
-                            {brand.initials}
-                        </span>
-                        <div>
-                            <p className={styles.name}>{brand.name}</p>
-                            <p className={styles.tagline}>{brand.tagline}</p>
-                        </div>
+                        <Logo />
                     </div>
 
                     <nav aria-label={FOOTER.navLabel}>
